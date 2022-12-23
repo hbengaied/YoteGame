@@ -244,6 +244,8 @@ int mouvementMidle(char deplacement, int num_joueur, char tab[][6], int x, int y
     return result;
 }
 
+
+
 void placement(char car, char tab[][6], int num_joueur, int nombre_tour, int x, int y){
     car = forme(num_joueur);
     tab[x][y] = car;
@@ -251,6 +253,16 @@ void placement(char car, char tab[][6], int num_joueur, int nombre_tour, int x, 
     nombre_tour ++;
 }
 
+int GameFinish(char tab[][6], char car){
+    for(int i = 0; i < 5 ;i++){
+        for(int j = 0; j < 6; j++){
+            if(tab[i][j] != car && tab[i][j] != ' '){
+                return 1; //0 ca veut dire pas fini
+            }
+        }
+    }
+    return 0; //jeu fini
+}
 
 int main()
 {
@@ -266,6 +278,7 @@ int main()
     //int quitte{0};
     while(partie !=0 )
     {
+        std::cout << "Tour numéro : " <<nombre_tour << std::endl;
         std::cout << "Joueur numero : " << num_joueur << " Entrer votre position : ";
         std::cin >> position;
         switch (position)
@@ -279,6 +292,7 @@ int main()
             if(tab[0][0] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,0,0);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[0][0] == forme(num_joueur))
@@ -290,14 +304,26 @@ int main()
                 {
                 case 's':
                     if(MyDeplacement(tab,0,0,1,0,deplacement,num_joueur) == 1){
-                        num_joueur=changement_joueur(num_joueur);
+                        if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                        nombre_tour ++;
+                        if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                     }
                     affiche_grille(tab);
                     break;
 
                 case 'd':
                     if(MyDeplacement(tab,0,0,0,1,deplacement,num_joueur) == 1){
-                        num_joueur=changement_joueur(num_joueur);
+                        if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                        nombre_tour ++;
+                        if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                     }
                     affiche_grille(tab);
                     break;
@@ -312,6 +338,7 @@ int main()
             if(tab[4][0] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,4,0);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[4][0] == forme(num_joueur))
@@ -323,14 +350,26 @@ int main()
                 {
                 case 'z':
                     if(MyDeplacement(tab,4,0,3,0,deplacement,num_joueur) == 1 ){
-                        num_joueur=changement_joueur(num_joueur);
+                        if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                        nombre_tour ++;
+                        if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                     }
                     affiche_grille(tab);
                     break;
 
                 case 'd':
                     if(MyDeplacement(tab,4,0,4,1,deplacement,num_joueur) == 1) {
-                        num_joueur=changement_joueur(num_joueur);
+                        if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                        nombre_tour ++;
+                        if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                     }
                     affiche_grille(tab);
                     break;
@@ -345,6 +384,7 @@ int main()
             if(tab[0][5] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,0,5);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[0][5] == forme(num_joueur))
@@ -356,14 +396,26 @@ int main()
                 {
                 case 's':
                     if(MyDeplacement(tab,0,5,1,5,deplacement,num_joueur) == 1){
-                        num_joueur=changement_joueur(num_joueur);
+                        if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                        nombre_tour ++;
+                        if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                     }
                     affiche_grille(tab);
                     break;
 
                 case 'q':
                     if(MyDeplacement(tab,0,5,0,4,deplacement,num_joueur) == 1){
-                        num_joueur=changement_joueur(num_joueur);
+                        if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                        nombre_tour ++;
+                        if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                     }
                     affiche_grille(tab);
                     break;
@@ -378,6 +430,7 @@ int main()
             if(tab[4][5] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,4,5);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[4][5] == forme(num_joueur))
@@ -389,14 +442,26 @@ int main()
                 {
                 case 'z':
                     if(MyDeplacement(tab,4,5,3,5,deplacement,num_joueur) == 1){
-                        num_joueur=changement_joueur(num_joueur);
+                        if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                        nombre_tour ++;
+                        if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                     }
                     affiche_grille(tab);
                     break;
 
                 case 'q':
                     if(MyDeplacement(tab,4,5,4,4,deplacement,num_joueur) == 1){
-                        num_joueur=changement_joueur(num_joueur);
+                        if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                        nombre_tour ++;
+                        if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                     }
                     affiche_grille(tab);
                     break;
@@ -412,6 +477,7 @@ int main()
             if(tab[0][1] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,0,1);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[0][1] == forme(num_joueur))
@@ -419,7 +485,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementFirstLigne(deplacement,num_joueur,tab,0,1) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -427,6 +499,7 @@ int main()
             if(tab[0][2] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,0,2);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[0][2] == forme(num_joueur))
@@ -434,7 +507,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementFirstLigne(deplacement,num_joueur,tab,0,2) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -442,6 +521,7 @@ int main()
             if(tab[0][3] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,0,3);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[0][3] == forme(num_joueur))
@@ -449,7 +529,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementFirstLigne(deplacement,num_joueur,tab,0,3) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -457,6 +543,7 @@ int main()
             if(tab[0][4] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,0,4);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[0][4] == forme(num_joueur))
@@ -464,7 +551,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementFirstLigne(deplacement,num_joueur,tab,0,4) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -472,6 +565,7 @@ int main()
             if(tab[4][1] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,4,1);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[4][1] == forme(num_joueur))
@@ -479,7 +573,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementLastLigne(deplacement, num_joueur, tab,4,1) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -487,6 +587,7 @@ int main()
             if(tab[4][2] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,4,2);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[4][2] == forme(num_joueur))
@@ -494,7 +595,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementLastLigne(deplacement, num_joueur, tab,4,2) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -502,6 +609,7 @@ int main()
             if(tab[4][3] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,4,3);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[4][3] == forme(num_joueur))
@@ -509,7 +617,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementLastLigne(deplacement, num_joueur, tab,4,3) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -517,6 +631,7 @@ int main()
             if(tab[4][4] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,4,4);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[4][4] == forme(num_joueur))
@@ -524,7 +639,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementLastLigne(deplacement, num_joueur, tab,4,4) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -533,6 +654,7 @@ int main()
             if(tab[1][0] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,1,0);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[1][0] == forme(num_joueur))
@@ -540,7 +662,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementLeftRow(deplacement, num_joueur, tab,1,0) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -548,6 +676,7 @@ int main()
             if(tab[2][0] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,2,0);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[2][0] == forme(num_joueur))
@@ -555,7 +684,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementLeftRow(deplacement, num_joueur, tab,2,0) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -563,6 +698,7 @@ int main()
             if(tab[3][0] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,3,0);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[3][0] == forme(num_joueur))
@@ -570,7 +706,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementLeftRow(deplacement, num_joueur, tab,3,0) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -579,6 +721,7 @@ int main()
             if(tab[1][5] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,1,5);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[1][5] == forme(num_joueur))
@@ -586,7 +729,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementRightRow(deplacement, num_joueur, tab,1,5) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -594,6 +743,7 @@ int main()
             if(tab[2][5] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,2,5);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[2][5] == forme(num_joueur))
@@ -601,7 +751,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementRightRow(deplacement, num_joueur, tab,2,5) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -609,6 +765,7 @@ int main()
             if(tab[3][5] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,3,5);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[3][5] == forme(num_joueur))
@@ -616,7 +773,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementRightRow(deplacement, num_joueur, tab,3,5) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -625,6 +788,7 @@ int main()
             if(tab[1][1] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,1,1);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[1][1] == forme(num_joueur))
@@ -632,7 +796,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementMidle(deplacement, num_joueur, tab,1,1) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -641,6 +811,7 @@ int main()
             if(tab[1][2] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,1,2);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[1][2] == forme(num_joueur))
@@ -648,7 +819,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementMidle(deplacement, num_joueur, tab,1,2) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -657,6 +834,7 @@ int main()
             if(tab[1][3] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,1,3);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[1][3] == forme(num_joueur))
@@ -664,7 +842,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementMidle(deplacement, num_joueur, tab,1,3) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -673,6 +857,7 @@ int main()
             if(tab[1][4] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,1,4);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[1][4] == forme(num_joueur))
@@ -680,7 +865,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementMidle(deplacement, num_joueur, tab,1,4) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -689,6 +880,7 @@ int main()
             if(tab[2][1] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,2,1);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[2][1] == forme(num_joueur))
@@ -696,7 +888,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementMidle(deplacement, num_joueur, tab,2,1) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -705,6 +903,7 @@ int main()
             if(tab[2][2] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,2,2);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[2][2] == forme(num_joueur))
@@ -712,7 +911,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementMidle(deplacement, num_joueur, tab,2,2) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -721,6 +926,7 @@ int main()
             if(tab[2][3] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,2,3);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[2][3] == forme(num_joueur))
@@ -728,7 +934,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementMidle(deplacement, num_joueur, tab,2,3) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -737,6 +949,7 @@ int main()
             if(tab[2][4] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,2,4);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[2][4] == forme(num_joueur))
@@ -744,7 +957,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementMidle(deplacement, num_joueur, tab,2,4) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -753,6 +972,7 @@ int main()
             if(tab[3][1] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,3,1);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[3][1] == forme(num_joueur))
@@ -760,7 +980,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementMidle(deplacement, num_joueur, tab,3,1) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -769,6 +995,7 @@ int main()
             if(tab[3][2] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,3,2);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[3][2] == forme(num_joueur))
@@ -776,7 +1003,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementMidle(deplacement, num_joueur, tab,3,2) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -785,6 +1018,7 @@ int main()
             if(tab[3][3] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,3,3);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[3][3] == forme(num_joueur))
@@ -792,7 +1026,13 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementMidle(deplacement, num_joueur, tab,3,3) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
@@ -801,6 +1041,7 @@ int main()
             if(tab[3][4] == ' ')
             {
                 placement(car, tab,num_joueur,nombre_tour,3,4);
+                nombre_tour ++;
                 num_joueur=changement_joueur(num_joueur);
             }
             else if(tab[3][4] == forme(num_joueur))
@@ -808,17 +1049,25 @@ int main()
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
                 if(mouvementMidle(deplacement, num_joueur, tab,3,4) == 1){
-                    num_joueur=changement_joueur(num_joueur);
+                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            partie = 0;
+                        }
+                    nombre_tour ++;
+                    if(partie !=0){
+                            num_joueur=changement_joueur(num_joueur);
+                        }
                 }
             }
             break;
-        
-
+            
         default:
             break;
         }
-    if(nombre_tour == 9)
-        partie = 0;
+    // if(nombre_tour == 9)
+    //     partie = 0;
+        if(partie == 0){
+            std::cout << "VICTOIRE DU JOUEUR "<< num_joueur << " C'EST LE JOUEUR AVEC LE SYMBOLE " << forme(num_joueur) << std::endl;
+        }
     }
 
     return 0;
