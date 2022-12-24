@@ -56,6 +56,8 @@ int deplacementNotAttack(char tab[][6], int xprecedent, int yprecedent, int xnou
     return 1;
 }
 
+
+// return un code genre 963 pour savoir que c'est une attaque puis utiliser ca dans un if pour set la prise d'une atre piece
 int deplacementIsAttack(char tab[][6], int xprecedent, int yprecedent, int xnouveau, int ynouveau, char car, char deplacement)
 {
     if(deplacement == 's'){
@@ -64,7 +66,7 @@ int deplacementIsAttack(char tab[][6], int xprecedent, int yprecedent, int xnouv
             tab[xnouveau][ynouveau] = ' ';
             xnouveau ++;
             tab[xnouveau][ynouveau] = car;
-            return 1;
+            return 963;
         }
     }else if(deplacement == 'z'){
         if(xnouveau - 1 >=0  && tab[xnouveau -1][ynouveau] == ' '){
@@ -72,7 +74,7 @@ int deplacementIsAttack(char tab[][6], int xprecedent, int yprecedent, int xnouv
             tab[xnouveau][ynouveau] = ' ';
             xnouveau --;
             tab[xnouveau][ynouveau] = car;
-            return 1;
+            return 963;
         }
     }else if(deplacement == 'd'){
         if(ynouveau + 1 <=5 && tab[xnouveau][ynouveau + 1] == ' '){
@@ -80,7 +82,7 @@ int deplacementIsAttack(char tab[][6], int xprecedent, int yprecedent, int xnouv
             tab[xnouveau][ynouveau] = ' ';
             ynouveau ++;
             tab[xnouveau][ynouveau] = car;
-            return 1;
+            return 963;
         }
     }else if(deplacement == 'q'){
         if(ynouveau - 1 >=0 && tab[xnouveau][ynouveau - 1] == ' ') {
@@ -88,7 +90,7 @@ int deplacementIsAttack(char tab[][6], int xprecedent, int yprecedent, int xnouv
             tab[xnouveau][ynouveau] = ' ';
             ynouveau--;
             tab[xnouveau][ynouveau] = car;
-            return 1;
+            return 963;
         }
     }
     return 0;
@@ -264,6 +266,280 @@ int GameFinish(char tab[][6], char car){
     return 0; //jeu fini
 }
 
+int nbPieceDecremente(int nbpiece){
+    return nbpiece --;
+}
+
+int checkEnoughtPiece(int num_joueur, int piecejoueurun, int piecejoueurdeux){
+    if(num_joueur == 1){
+        if(piecejoueurun -1 >=0){
+            return piecejoueurun -1;
+        }else{
+            return -1;
+        }
+    }else if(num_joueur == 2){
+        if(piecejoueurdeux -1 >=0){
+            return piecejoueurdeux -1;
+        }else{
+            return -1;
+        }
+    }
+    return -1;
+}
+
+int deletePiece(char tab[][6], int emplacement, int num_joueur){
+    char car = forme(num_joueur);
+    switch (emplacement)
+    {
+    case 1:
+        if(tab[0][0] != ' ' && tab[0][0] != car){
+            tab[0][0] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 2:
+        if(tab[0][1] != ' ' && tab[0][1] != car){
+            tab[0][1] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 3:
+        if(tab[0][2] != ' ' && tab[0][2] != car){
+            tab[0][2] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 4:
+        if(tab[0][3] != ' ' && tab[0][3] != car){
+            tab[0][3] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 5:
+        if(tab[0][4] != ' ' && tab[0][4] != car){
+            tab[0][4] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 6:
+        if(tab[0][5] != ' ' && tab[0][5] != car){
+            tab[0][5] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+
+    case 7:
+        if(tab[1][0] != ' ' && tab[1][0] != car){
+            tab[1][0] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 8:
+        if(tab[1][1] != ' ' && tab[1][1] != car){
+            tab[1][1] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 9:
+        if(tab[1][2] != ' ' && tab[1][2] != car){
+            tab[1][2] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 10:
+        if(tab[1][3] != ' ' && tab[1][3] != car){
+            tab[1][3] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 11:
+        if(tab[1][4] != ' ' && tab[1][4] != car){
+            tab[1][4] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 12:
+        if(tab[1][5] != ' ' && tab[1][5] != car){
+            tab[1][5] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 13:
+        if(tab[2][0] != ' ' && tab[2][0] != car){
+            tab[2][0] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 14:
+        if(tab[2][1] != ' ' && tab[2][1] != car){
+            tab[2][1] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 15:
+        if(tab[2][2] != ' ' && tab[2][2] != car){
+            tab[2][2] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 16:
+        if(tab[2][3] != ' ' && tab[2][3] != car){
+            tab[2][3] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 17:
+        if(tab[2][4] != ' ' && tab[2][4] != car){
+            tab[2][4] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 18:
+        if(tab[2][5] != ' ' && tab[2][5] != car){
+            tab[2][5] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 19:
+        if(tab[3][0] != ' ' && tab[3][0] != car){
+            tab[3][0] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 20:
+        if(tab[3][1] != ' ' && tab[3][1] != car){
+            tab[3][1] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 21:
+        if(tab[3][2] != ' ' && tab[3][2] != car){
+            tab[3][2] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 22:
+        if(tab[3][3] != ' ' && tab[3][3] != car){
+            tab[3][3] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 23:
+        if(tab[3][4] != ' ' && tab[3][4] != car){
+            tab[3][4] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 24:
+        if(tab[3][5] != ' ' && tab[3][5] != car){
+            tab[3][5] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 25:
+        if(tab[4][0] != ' ' && tab[4][0] != car){
+            tab[4][0] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 26:
+        if(tab[4][1] != ' ' && tab[4][1] != car){
+            tab[4][1] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 27:
+        if(tab[4][2] != ' ' && tab[4][2] != car){
+            tab[4][2] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 28:
+        if(tab[4][3] != ' ' && tab[4][3] != car){
+            tab[4][3] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 29:
+        if(tab[4][4] != ' ' && tab[4][4] != car){
+            tab[4][4] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    case 30:
+        if(tab[4][5] != ' ' && tab[4][5] != car){
+            tab[4][5] = ' ';
+            return 1;
+        }else{
+            return 0;
+        }
+        break;
+    
+    default:
+        return 0;
+        break;
+    }
+    return 0;
+}
+
 int main()
 {
     char tab[5][6];
@@ -275,9 +551,16 @@ int main()
     char car = ' ';
     int num_joueur{1};
     int nombre_tour{0};
+    int resDep = 0;
+    int nbPieceJoueurUn = 6;
+    int nbPieceJoueurDeux = 6;
+    int nbPieceReserve = 0;
+    int pieceTakeOk = 2;
+    int emplacementToDelete =0;
     //int quitte{0};
     while(partie !=0 )
     {
+        std::cout << "Nombre piece reserve joueur 1: "<<nbPieceJoueurUn<< "----------- Nombre piece reserve joueur 2: " << nbPieceJoueurDeux <<std::endl;
         std::cout << "Tour numéro : " <<nombre_tour << std::endl;
         std::cout << "Joueur numero : " << num_joueur << " Entrer votre position : ";
         std::cin >> position;
@@ -291,9 +574,19 @@ int main()
         case 1:
             if(tab[0][0] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,0,0);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[0][0] == forme(num_joueur))
             {
@@ -303,26 +596,67 @@ int main()
                 switch (deplacement)
                 {
                 case 's':
-                    if(MyDeplacement(tab,0,0,1,0,deplacement,num_joueur) == 1){
+                    resDep = MyDeplacement(tab,0,0,1,0,deplacement,num_joueur);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }
                         if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                            std::cout <<"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+++++++++++++++++++++++++" << std::endl;
                             partie = 0;
                         }
-                        nombre_tour ++;
-                        if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
+                        //je gere pas l'erreur si le joueur essaye de prendre une mauvaise piece et lui dire que c pas possible
                     }
                     affiche_grille(tab);
                     break;
 
                 case 'd':
-                    if(MyDeplacement(tab,0,0,0,1,deplacement,num_joueur) == 1){
-                        if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                    resDep = MyDeplacement(tab,0,0,0,1,deplacement,num_joueur);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                        nombre_tour ++;
-                        if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                     }
                     affiche_grille(tab);
@@ -337,9 +671,19 @@ int main()
         case 25:
             if(tab[4][0] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,4,0);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[4][0] == forme(num_joueur))
             {
@@ -349,26 +693,64 @@ int main()
                 switch (deplacement)
                 {
                 case 'z':
-                    if(MyDeplacement(tab,4,0,3,0,deplacement,num_joueur) == 1 ){
-                        if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                    resDep = MyDeplacement(tab,4,0,3,0,deplacement,num_joueur);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                        nombre_tour ++;
-                        if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                     }
                     affiche_grille(tab);
                     break;
 
                 case 'd':
-                    if(MyDeplacement(tab,4,0,4,1,deplacement,num_joueur) == 1) {
-                        if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                    resDep = MyDeplacement(tab,4,0,4,1,deplacement,num_joueur);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                        nombre_tour ++;
-                        if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                     }
                     affiche_grille(tab);
@@ -383,9 +765,19 @@ int main()
         case 6:
             if(tab[0][5] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,0,5);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[0][5] == forme(num_joueur))
             {
@@ -395,26 +787,64 @@ int main()
                 switch (deplacement)
                 {
                 case 's':
-                    if(MyDeplacement(tab,0,5,1,5,deplacement,num_joueur) == 1){
-                        if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                    resDep = MyDeplacement(tab,0,5,1,5,deplacement,num_joueur);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                        nombre_tour ++;
-                        if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                     }
                     affiche_grille(tab);
                     break;
 
                 case 'q':
-                    if(MyDeplacement(tab,0,5,0,4,deplacement,num_joueur) == 1){
-                        if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                    resDep = MyDeplacement(tab,0,5,0,4,deplacement,num_joueur);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                        nombre_tour ++;
-                        if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                     }
                     affiche_grille(tab);
@@ -429,9 +859,19 @@ int main()
         case 30:
             if(tab[4][5] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,4,5);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[4][5] == forme(num_joueur))
             {
@@ -441,26 +881,64 @@ int main()
                 switch (deplacement)
                 {
                 case 'z':
-                    if(MyDeplacement(tab,4,5,3,5,deplacement,num_joueur) == 1){
-                        if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                    resDep = MyDeplacement(tab,4,5,3,5,deplacement,num_joueur);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                        nombre_tour ++;
-                        if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                     }
                     affiche_grille(tab);
                     break;
 
                 case 'q':
-                    if(MyDeplacement(tab,4,5,4,4,deplacement,num_joueur) == 1){
-                        if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                    resDep = MyDeplacement(tab,4,5,4,4,deplacement,num_joueur);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                        nombre_tour ++;
-                        if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                     }
                     affiche_grille(tab);
@@ -476,587 +954,1341 @@ int main()
         case 2:
             if(tab[0][1] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,0,1);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[0][1] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementFirstLigne(deplacement,num_joueur,tab,0,1) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementFirstLigne(deplacement,num_joueur,tab,0,1);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
         case 3:
             if(tab[0][2] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,0,2);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[0][2] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementFirstLigne(deplacement,num_joueur,tab,0,2) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementFirstLigne(deplacement,num_joueur,tab,0,2);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
         case 4:
             if(tab[0][3] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,0,3);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[0][3] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementFirstLigne(deplacement,num_joueur,tab,0,3) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementFirstLigne(deplacement,num_joueur,tab,0,3);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
          case 5:
             if(tab[0][4] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,0,4);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[0][4] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementFirstLigne(deplacement,num_joueur,tab,0,4) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementFirstLigne(deplacement,num_joueur,tab,0,4);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
         case 26:
             if(tab[4][1] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,4,1);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[4][1] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementLastLigne(deplacement, num_joueur, tab,4,1) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementLastLigne(deplacement,num_joueur,tab,4,1);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
         case 27:
             if(tab[4][2] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,4,2);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[4][2] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementLastLigne(deplacement, num_joueur, tab,4,2) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementLastLigne(deplacement,num_joueur,tab,4,2);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
         case 28:
             if(tab[4][3] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,4,3);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[4][3] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementLastLigne(deplacement, num_joueur, tab,4,3) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementLastLigne(deplacement,num_joueur,tab,4,3);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
          case 29:
             if(tab[4][4] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,4,4);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[4][4] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementLastLigne(deplacement, num_joueur, tab,4,4) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementLastLigne(deplacement,num_joueur,tab,4,4);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
         
         case 7:
             if(tab[1][0] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,1,0);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[1][0] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementLeftRow(deplacement, num_joueur, tab,1,0) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementLeftRow(deplacement,num_joueur,tab,1,0);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
         case 13:
             if(tab[2][0] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,2,0);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[2][0] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementLeftRow(deplacement, num_joueur, tab,2,0) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementLeftRow(deplacement,num_joueur,tab,2,0);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
          case 19:
             if(tab[3][0] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,3,0);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[3][0] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementLeftRow(deplacement, num_joueur, tab,3,0) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementLeftRow(deplacement,num_joueur,tab,3,0);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
 
         case 12:
             if(tab[1][5] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,1,5);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[1][5] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementRightRow(deplacement, num_joueur, tab,1,5) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementRightRow(deplacement,num_joueur,tab,1,5);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
         case 18:
             if(tab[2][5] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,2,5);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[2][5] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementRightRow(deplacement, num_joueur, tab,2,5) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementRightRow(deplacement,num_joueur,tab,2,5);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
          case 24:
             if(tab[3][5] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,3,5);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[3][5] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementRightRow(deplacement, num_joueur, tab,3,5) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementRightRow(deplacement,num_joueur,tab,3,5);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
 
         case 8:
             if(tab[1][1] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,1,1);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[1][1] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementMidle(deplacement, num_joueur, tab,1,1) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementMidle(deplacement,num_joueur,tab,1,1);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
         
         case 9:
             if(tab[1][2] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,1,2);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[1][2] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementMidle(deplacement, num_joueur, tab,1,2) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementMidle(deplacement,num_joueur,tab,1,2);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
 
         case 10:
             if(tab[1][3] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,1,3);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[1][3] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementMidle(deplacement, num_joueur, tab,1,3) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementMidle(deplacement,num_joueur,tab,1,3);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
 
         case 11:
             if(tab[1][4] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,1,4);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[1][4] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementMidle(deplacement, num_joueur, tab,1,4) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementMidle(deplacement,num_joueur,tab,1,4);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
 
         case 14:
             if(tab[2][1] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,2,1);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[2][1] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementMidle(deplacement, num_joueur, tab,2,1) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementMidle(deplacement,num_joueur,tab,2,1);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
         
         case 15:
             if(tab[2][2] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,2,2);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[2][2] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementMidle(deplacement, num_joueur, tab,2,2) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementMidle(deplacement,num_joueur,tab,2,2);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
 
         case 16:
             if(tab[2][3] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,2,3);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[2][3] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementMidle(deplacement, num_joueur, tab,2,3) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementMidle(deplacement,num_joueur,tab,2,3);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
 
         case 17:
             if(tab[2][4] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,2,4);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[2][4] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementMidle(deplacement, num_joueur, tab,2,4) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementMidle(deplacement,num_joueur,tab,2,4);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
 
         case 20:
             if(tab[3][1] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,3,1);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[3][1] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementMidle(deplacement, num_joueur, tab,3,1) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementMidle(deplacement,num_joueur,tab,3,1);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
         
         case 21:
             if(tab[3][2] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,3,2);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[3][2] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementMidle(deplacement, num_joueur, tab,3,2) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementMidle(deplacement,num_joueur,tab,3,2);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
 
         case 22:
             if(tab[3][3] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,3,3);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[3][3] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementMidle(deplacement, num_joueur, tab,3,3) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementMidle(deplacement,num_joueur,tab,3,3);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
 
         case 23:
             if(tab[3][4] == ' ')
             {
+                nbPieceReserve = checkEnoughtPiece(num_joueur,nbPieceJoueurUn,nbPieceJoueurDeux);
+                if(nbPieceReserve >=0){
                 placement(car, tab,num_joueur,nombre_tour,3,4);
                 nombre_tour ++;
+                if(num_joueur == 1){
+                    nbPieceJoueurUn = nbPieceReserve;
+                }else {
+                    nbPieceJoueurDeux = nbPieceReserve;
+                }
                 num_joueur=changement_joueur(num_joueur);
+                }else{
+                    std::cout <<"Vous n'avez plus de piece en reserve pour en introduire ! Vous pouvez que deplacer vos pions !" << std::endl;
+                }
             }
             else if(tab[3][4] == forme(num_joueur))
             {
                 std::cout<< " Vous pouvez deplacer votre pions " << std::endl;
                 std::cin >> deplacement;
-                if(mouvementMidle(deplacement, num_joueur, tab,3,4) == 1){
-                    if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+                resDep = mouvementMidle(deplacement,num_joueur,tab,3,4);
+                    if(resDep == 963){
+                        if(GameFinish(tab, forme(num_joueur)) != 0 && nombre_tour > 2){
+                            std::cout<<"Entrer la piece a prendre sur le plateau : " <<std::endl;
+                            std::cin>>emplacementToDelete;
+                            pieceTakeOk = deletePiece(tab,emplacementToDelete,num_joueur); 
+
+                        }else if (GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour <= 2){
+                            //ici si le joueur n'a plus de piece sur le plateau et que le nb de tour est <=2 il doit piocher un jeton dans sa reserve
+                            if(num_joueur == 1){
+                                nbPieceJoueurDeux --;
+                            }else{
+                                nbPieceJoueurUn --;
+                            }
+
+                        }if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
                             partie = 0;
                         }
-                    nombre_tour ++;
-                    if(partie !=0){
-                            num_joueur=changement_joueur(num_joueur);
+
+                        if(pieceTakeOk == 1){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
+                            pieceTakeOk = 2;
+                        }else if(partie!=0 && pieceTakeOk == 2){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
-                }
+                    }
             }
             break;
             
