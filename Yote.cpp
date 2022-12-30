@@ -1138,6 +1138,9 @@ int main()
                                 num_joueur = changement_joueur(num_joueur);
                             }
                             //je gere pas l'erreur si le joueur essaye de prendre une mauvaise piece et lui dire que c pas possible
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                         affiche_grille(tab);
                         break;
@@ -1170,6 +1173,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                         affiche_grille(tab);
                         break;
@@ -1232,6 +1238,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                         affiche_grille(tab);
                         break;
@@ -1264,6 +1273,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                         affiche_grille(tab);
                         break;
@@ -1326,6 +1338,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                         affiche_grille(tab);
                         break;
@@ -1358,6 +1373,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                         affiche_grille(tab);
                         break;
@@ -1420,6 +1438,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                         affiche_grille(tab);
                         break;
@@ -1452,6 +1473,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                         affiche_grille(tab);
                         break;
@@ -1511,6 +1535,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -1562,6 +1589,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -1613,6 +1643,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -1664,6 +1697,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -1715,6 +1751,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -1766,6 +1805,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -1817,6 +1859,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -1868,6 +1913,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -1920,6 +1968,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -1971,6 +2022,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -2022,6 +2076,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -2074,6 +2131,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -2125,6 +2185,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -2176,6 +2239,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -2228,6 +2294,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -2280,6 +2349,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -2332,6 +2404,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -2384,6 +2459,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -2436,6 +2514,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -2485,9 +2566,13 @@ int main()
                                 num_joueur = changement_joueur(num_joueur);
                                 pieceTakeOk = 2;
                             }else if(partie!=0 && pieceTakeOk == 2){
+                                std::cout<<"JE RENTRE ICI CHANGEMENT JOUEUR CASE 15"<<std::endl;
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -2540,6 +2625,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -2592,6 +2680,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -2644,6 +2735,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -2696,6 +2790,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -2748,6 +2845,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -2800,6 +2900,9 @@ int main()
                                 nombre_tour ++;
                                 num_joueur = changement_joueur(num_joueur);
                             }
+                        }else if(resDep == 1 && partie !=0 ){
+                            nombre_tour ++;
+                            num_joueur = changement_joueur(num_joueur);
                         }
                 }
                 break;
@@ -2822,13 +2925,15 @@ int main()
                 nombre_tour ++;
                 num_joueur = changement_joueur(num_joueur);
             }else{
-                std::cout<<"ZEBIIII SA MERE LA PUTE JE RENTRE DANS AUCUNE CONDITION DU TURN IA"<<std::endl;
                 affiche_grille(tab);
                 num_joueur = changement_joueur(num_joueur);
             }
         }
-    // if(nombre_tour == 9)
-    //     partie = 0;
+        if(GameFinish(tab, forme(num_joueur)) == 0 && nombre_tour > 2){
+            std::cout <<"DSFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"<<std::endl;
+            partie = 0;
+        }
+
         if(partie == 0){
             std::cout << "VICTOIRE DU JOUEUR "<< num_joueur << " C'EST LE JOUEUR AVEC LE SYMBOLE " << forme(num_joueur) << std::endl;
         }
